@@ -6,6 +6,7 @@ import * as yup from "yup";
 
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
+import { watch } from 'fs';
 
 const schema = yup
   .object({
@@ -28,6 +29,12 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+  console.log(isValid);
+  
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    alert("Success")
+  };
+
   return (
     <Container>
       <LoginContainer>
@@ -49,7 +56,7 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button title="Entrar" onClick={handleClick} disabled={!isValid} />
         </Column>
       </LoginContainer>
     </Container>

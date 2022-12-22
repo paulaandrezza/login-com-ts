@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 
 export const ButtonContainer = styled.button`
@@ -14,4 +14,14 @@ export const ButtonContainer = styled.button`
         opacity: 0.6;
         cursor:pointer;
     }
+
+    ${({disabled}) => disabled  && css`
+    background-color: #808080;
+    border: 1px solid #363636;
+    color: #363636;
+        &:hover {
+            opacity: 1;
+            cursor: default;
+        }
+    `}
 `
